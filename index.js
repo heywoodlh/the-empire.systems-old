@@ -41,7 +41,7 @@ Metalsmith(__dirname)
       rebase: true
     }
   }))
-  .use(drafts());
+  .use(drafts())
   .build(function(err, files) {
     if (err) { throw err; }
   });
