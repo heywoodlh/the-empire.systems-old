@@ -9,7 +9,7 @@ Metalsmith(__dirname)
     title: "The Empire",
     description: "Cybersecurity and Systems Administration",
     generator: "Metalsmith",
-    url: "http://the-empire.systems"
+    url: "http://www.metalsmith.io"
   })
   .source('./src')
   .destination('./build')
