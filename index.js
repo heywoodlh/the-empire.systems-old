@@ -6,6 +6,7 @@ var permalinks  = require('metalsmith-permalinks');
 var cleanCSS = require('metalsmith-clean-css');
 var drafts = require('metalsmith-drafts');
 var excerpts = require('metalsmith-excerpts');
+var collections = require('metalsmith-collections');
 
 Metalsmith(__dirname)
   .metadata({
@@ -21,6 +22,13 @@ Metalsmith(__dirname)
   .use(serve({
     port: 8080,
     verbose: true
+  }))
+  .use(collections({
+    articles: {
+      pattern: '*.md',
+      sortBy: 'date',
+      reverse: true
+    }
   }))
   .use(markdown())
   .use(permalinks({
