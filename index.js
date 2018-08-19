@@ -5,6 +5,7 @@ var layouts     = require('metalsmith-layouts');
 var permalinks  = require('metalsmith-permalinks');
 var cleanCSS = require('metalsmith-clean-css');
 var drafts = require('metalsmith-drafts');
+var excerpts = require('metalsmith-excerpts');
 
 Metalsmith(__dirname)
   .metadata({
@@ -41,6 +42,7 @@ Metalsmith(__dirname)
       rebase: true
     }
   }))
+  .use(excerpts())
   .use(drafts())
   .build(function(err, files) {
     if (err) { throw err; }
