@@ -2,6 +2,7 @@
 title: 'Deploying ELK Stack Via Docker'
 date: 2018-01-03
 autotoc: true
+excerpt: true
 collection:
 - blog
 - cybersecurity
@@ -21,7 +22,10 @@ the installation process.  
 without sudo  
 
 ### Run ElasticSearch:
-`docker run -d -p 9200:9200 -p 9300:9300 -it -h elasticsearch --name elasticsearch elasticsearch` This will cause ElasticSearch to run on port 9200.
+```
+docker run -d -p 9200:9200 -p 9300:9300 -it -h elasticsearch --name elasticsearch elasticsearch
+``` 
+This will cause ElasticSearch to run on port 9200.
 This can be tested by running this command on the server: `curl http://localhost:9200/` And the similar output will show that ElasticSearch is running:
 ```
 { "name" : "fCM5BQb", "cluster_name" : "elasticsearch", "cluster_uuid" :
@@ -31,7 +35,9 @@ This can be tested by running this command on the server: `curl http://localhost
 ```
 
 ### Run Kibana: 
-`docker run -d -p 5601:5601 -h kibana --name kibana --link elasticsearch:elasticsearch kibana` 
+```
+docker run -d -p 5601:5601 -h kibana --name kibana --link elasticsearch:elasticsearch kibana
+``` 
 This will run Kibana on port 5601 on the server, link it to the elasticsearch container and should be available at http://ip-address:5601/. You can make sure everything so far is working properly by visiting http://ip-address:5601/status.
 
 ### Securing Kibana:
