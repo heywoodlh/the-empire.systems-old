@@ -1,23 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>{{ title }}</title>
-  <meta name="description" content="{{ description }}">
-</head>
-<body>
-  <header>
-    <p>
-      <a href="/">Home</a>
-    </p>
+  <head>
+    {{> head}}
+  </head>
+  <body id="post" {{#if feature}}class="feature"{{/if}}>
+    {{> header}}
 
-  </header>
-  <h1>{{ title }}</h1>
-  <time>{{ date }}</time>
-  {{{ contents }}}
+    <div id="main" role="main">
+      <article class="entry">
+        <div class="entry-content">
+          {{#if feature}}
+          <div class="entry-image-index">
+            <img src="{{ site.url }}/images/{{ feature.image }}" alt="{{ title }}">
+            {{#if feature.credit}}
+            <div class="image-credit">
+              Image source:
+              <a href="{{ feature.credit.url }}" target="_blank">
+                {{ feature.credit.name }}
+              </a>
+            </div>
+            {{/if}}
+          </div>
+          {{/if}}
+          <h1 class="post-title entry-title">{{ title }}</h1>
+          {{{ contents }}}
+          <footer class="entry-meta">
+            <!-- TODO: Tags -->
+            <span class="author vcard"><span class="fn">{{ site.owner.name }}</span></span>
+            <!-- TODO: Social Share -->
+          </footer>
+        </div>
+        {{> author}}
+        {{#if (and site.disqus comments)}}
+        <section id="disqus_thread"></section>
+        {{/if}}
+        {{> read-more}}
+      </article>
+    </div>
 
-  <footer>
-    <p>Generated with {{ generator }} &mdash; <a href="{{ url }}">{{ url }}</a></p>
-  </footer>
-</body>
+    {{> scripts}}
+
+    {{> footer}}
+  </body>
 </html>
