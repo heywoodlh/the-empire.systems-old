@@ -11,6 +11,7 @@ Metalsmith(__dirname)
   .metadata({
     title: "The Empire",
     description: "Cybersecurity and Systems Administration",
+    author: 'Spencer Heywood',
     generator: "Metalsmith",
     url: "http://www.metalsmith.io"
   })
