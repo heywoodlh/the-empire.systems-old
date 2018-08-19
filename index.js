@@ -3,6 +3,8 @@ var serve = require('metalsmith-serve');
 var markdown    = require('metalsmith-markdown');
 var layouts     = require('metalsmith-layouts');
 var permalinks  = require('metalsmith-permalinks');
+var cleanCSS = require('metalsmith-clean-css');
+var drafts = require('metalsmith-drafts');
 
 Metalsmith(__dirname)
   .metadata({
@@ -33,6 +35,13 @@ Metalsmith(__dirname)
   .use(layouts({
     engine: 'handlebars'
   }))
+  .use(cleanCSS({
+    files: 'src/styles/*.css',
+    cleanCSS: {
+      rebase: true
+    }
+  }))
+  .use(drafts());
   .build(function(err, files) {
     if (err) { throw err; }
   });
