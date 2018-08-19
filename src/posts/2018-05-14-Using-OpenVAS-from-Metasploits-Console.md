@@ -1,6 +1,7 @@
 ---
 title: 'Using OpenVAS from Metasploit's Console' 
 date: 2018-05-14
+layout: post.html
 collection: 
 - cybersecurity 
 - linux
@@ -13,7 +14,7 @@ Assuming you have Docker installed, you can quickly spin up OpenVAS using this c
 ```
 docker run -d -p 443:443 -p 9390:9390 --name openvas mikesplain/openvas
 ```
-**** The Commands: ****
+### The Commands:
 First, open Metasploit's console: `msfconsole` 
 
 Then, load the OpenVAS module: 

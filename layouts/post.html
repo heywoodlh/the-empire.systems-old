@@ -1,45 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    {{> head}}
-  </head>
-  <body id="post" {{#if feature}}class="feature"{{/if}}>
-    {{> header}}
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="assets/style.css" title="style" />
+</head>
 
-    <div id="main" role="main">
-      <article class="entry">
-        <div class="entry-content">
-          {{#if feature}}
-          <div class="entry-image-index">
-            <img src="{{ site.url }}/images/{{ feature.image }}" alt="{{ title }}">
-            {{#if feature.credit}}
-            <div class="image-credit">
-              Image source:
-              <a href="{{ feature.credit.url }}" target="_blank">
-                {{ feature.credit.name }}
-              </a>
-            </div>
-            {{/if}}
-          </div>
-          {{/if}}
-          <h1 class="post-title entry-title">{{ title }}</h1>
-          {{{ contents }}}
-          <footer class="entry-meta">
-            <!-- TODO: Tags -->
-            <span class="author vcard"><span class="fn">{{ site.owner.name }}</span></span>
-            <!-- TODO: Social Share -->
-          </footer>
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <h1><a href="/">{{ title }}</a></h1>
+          <h2>{{ description }}</h2>
         </div>
-        {{> author}}
-        {{#if (and site.disqus comments)}}
-        <section id="disqus_thread"></section>
-        {{/if}}
-        {{> read-more}}
-      </article>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <li><a href='/'>Home</a></li>
+          <li><a href='/posts'>Posts</a></li>
+          <li><a href='/pages/Archive/index.html'>Archive</a></li>
+          <li><a href='/pages/Contact/index.html'>Contact</a></li>
+        </ul>
+      </div>
     </div>
-
-    {{> scripts}}
-
-    {{> footer}}
-  </body>
+    <div id='site_content'>
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+      </div>
+      <div id="content">
+      
+        {{{ contents }}}
+      
+      </div>
+    </div>
+    <div id="footer">
+      Copyright &copy; black_white | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">Free CSS Templates</a>
+    </div>
+  </div>
+</body>
 </html>
