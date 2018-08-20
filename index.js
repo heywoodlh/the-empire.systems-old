@@ -5,7 +5,6 @@ var layouts = require('metalsmith-layouts');
 var drafts = require('metalsmith-drafts');
 var excerpts = require('metalsmith-excerpts');
 var collections = require('metalsmith-collections');
-var paginate = require('metalsmith-paginate');
 
 Metalsmith(__dirname)
   .metadata({
@@ -34,10 +33,6 @@ Metalsmith(__dirname)
   .use(markdown())
   .use(layouts({
     engine: 'handlebars'
-  }))
-  .use(paginate({
-    perPage: 10,
-    path: "page/:num/index.html"
   }))
   .use(excerpts())
   .use(drafts())

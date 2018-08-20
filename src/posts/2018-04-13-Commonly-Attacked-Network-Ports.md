@@ -1,11 +1,7 @@
 ---
 title: 'Commonly Attacked Network Ports'
 date: 2018-04-13 
-layout: post.html
-collection: 
-- cybersecurity 
-- server 
-- all
+collection: cybersecurity, server, all
 ---
 
 This is a simple list of ports that are commonly used and frequently attacked. 

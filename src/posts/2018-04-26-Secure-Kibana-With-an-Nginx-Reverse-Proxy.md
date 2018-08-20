@@ -1,12 +1,7 @@
 ---
 title: 'Secure Kibana With an Nginx Reverse Proxy' 
 date: 2018-04-26
-layout: post.html
-collection: 
-- cybersecurity 
-- linux 
-- server
-- all 
+collection: cybersecurity, linux, server, all 
 ---
 ### Securing Kibana: 
 Upon installing Kibana, initially there is no password protection on the page and it's being served via HTTP rather than HTTPS. Elastic has security plugins and features that can be used to remedy this but I found that using Nginx as a proxy to secure the page was the easiest solution for my needs. 

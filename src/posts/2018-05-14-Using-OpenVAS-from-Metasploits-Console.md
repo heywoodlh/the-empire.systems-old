@@ -1,11 +1,7 @@
 ---
 title: 'Using OpenVAS from Metasploit's Console' 
 date: 2018-05-14
-layout: post.html
-collection: 
-- cybersecurity 
-- linux
-- all 
+collection: cybersecurity, linux, all 
 --- 
 
 Metasploit and OpenVAS are awesome open source security tools designed for penetration tests that anybody can use. Metasploit is an exploitation framework designed to make exploiting known vulnerabilities extremely simple. However, before you can know what to exploit you should run a vulnerability scanner to look for vulnerabilities on a network. OpenVAS is an open source vulnerability scanner that ties into Metasploit really well. 

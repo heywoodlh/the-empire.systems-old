@@ -1,11 +1,7 @@
 ---
 title: 'Easily Install Filebeat on OS X' 
 date: 2018-02-20
-layout: post.html 
-collection: 
-- cybersecurity 
-- server 
-- all
+collection: all, cybersecurity 
 ---
 
 This is a quick snippet on how to install and configure Filebeat on OS X using Homebrew.

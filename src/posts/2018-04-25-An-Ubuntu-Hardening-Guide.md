@@ -1,12 +1,7 @@
 ---
 title: 'An Ubuntu Hardening Guide'
 date: 2018-04-25 
-layout: post.html
-collection: 
-- cybersecurity 
-- linux 
-- server 
-- all
+collection: cybersecurity, linux, server, all
 --- 
 
 This is a hardening guide for Ubuntu Server and Desktop. The same concepts can be applied to other distributions of Linux, although the steps would be a little different. This article will go over various tasks and examples for desktop and server users of Ubuntu to make their systems a lot more secure.

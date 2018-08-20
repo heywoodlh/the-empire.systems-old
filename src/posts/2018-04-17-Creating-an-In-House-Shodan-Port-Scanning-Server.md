@@ -1,10 +1,7 @@
 ---
 title: 'Creating an In-House "Shodan" Port Scanning Server' 
 date: 2018-04-17 
-layout: post.html
-collection: 
-- cybersecurity
-- all 
+collection: cybersecurity, all 
 --- 
 
 I do not promote illegal activity of any sort so please use this information responsibly. First, I want everyone to know that I think Shodan is an awesome service and that you will definitely want to continue using it for security purposes. I believe it would be unwise to try to completely replace it with your own solution and not utilize the information it
