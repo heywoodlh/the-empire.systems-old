@@ -1,6 +1,7 @@
 ---
 title: 'Install OpenVAS on Ubuntu 16.04' 
 date: 2018-06-11 
+layout: post.html
 collection: cybersecurity, linux, server, all
 --- 
 

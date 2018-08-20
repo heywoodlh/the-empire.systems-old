@@ -1,6 +1,7 @@
 ---
 title: 'Creating an In-House "Shodan" Port Scanning Server' 
 date: 2018-04-17 
+layout: post.html
 collection: cybersecurity, all 
 --- 
 
