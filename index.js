@@ -1,10 +1,23 @@
-var Metalsmith = require('metalsmith');
-var serve = require('metalsmith-serve');
-var markdown = require('metalsmith-markdown');
-var layouts = require('metalsmith-layouts');
-var drafts = require('metalsmith-drafts');
-var excerpts = require('metalsmith-excerpts');
-var collections = require('metalsmith-collections');
+var Metalsmith = require('metalsmith'),
+    serve = require('metalsmith-serve'),
+    markdown = require('metalsmith-markdown'),
+    layouts = require('metalsmith-layouts'),
+    drafts = require('metalsmith-drafts'),
+    excerpts = require('metalsmith-excerpts'),
+    collections = require('metalsmith-collections'),
+    handlebars = require('handlebars');
+
+handlebars.registerHelper('moment', require('helper-moment'));
+
+handlebars.registerHelper('each_upto', function(ary, max, options) {
+    if(!ary || ary.length == 0)
+        return options.inverse(this);
+
+    var result = [ ];
+    for(var i = 0; i < max && i < ary.length; ++i)
+        result.push(options.fn(ary[i]));
+    return result.join('');
+});
 
 Metalsmith(__dirname)
   .metadata({
@@ -26,6 +39,7 @@ Metalsmith(__dirname)
   }))
   .use(collections({
     all: {
+      pattern: 'posts/*.md',
       sortBy: 'date',
       reverse: true
     }
