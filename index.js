@@ -20,7 +20,10 @@ Metalsmith(__dirname)
   .clean(false)
   .use(serve({
     port: 8080,
-    verbose: true
+    verbose: true,
+    http_error_files: {
+      404: "/404.html"
+    }
   }))
   .use(collections({
     all: {
