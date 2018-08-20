@@ -1,12 +1,11 @@
-var Metalsmith  = require('metalsmith');
+var Metalsmith = require('metalsmith');
 var serve = require('metalsmith-serve');
-var markdown    = require('metalsmith-markdown');
-var layouts     = require('metalsmith-layouts');
-var permalinks  = require('metalsmith-permalinks');
-var cleanCSS = require('metalsmith-clean-css');
+var markdown = require('metalsmith-markdown');
+var layouts = require('metalsmith-layouts');
 var drafts = require('metalsmith-drafts');
 var excerpts = require('metalsmith-excerpts');
 var collections = require('metalsmith-collections');
+var paginate = require('metalsmith-paginate');
 
 Metalsmith(__dirname)
   .metadata({
@@ -24,32 +23,18 @@ Metalsmith(__dirname)
     verbose: true
   }))
   .use(collections({
-    articles: {
-      pattern: 'posts/*.md',
+    all: {
       sortBy: 'date',
       reverse: true
     }
   }))
   .use(markdown())
-  .use(permalinks({
-    // each linkset defines a match, and any other desired option
-    linksets: [{
-        match: { collection: 'blogposts' },
-        pattern: 'posts/:date:title',
-        date: 'YYYY-MM-DD-'
-    },{
-        match: { collection: 'pages' },
-        pattern: 'pages/:title'
-    }]
-  })) 
   .use(layouts({
     engine: 'handlebars'
   }))
-  .use(cleanCSS({
-    files: 'src/styles/*.css',
-    cleanCSS: {
-      rebase: true
-    }
+  .use(paginate({
+    perPage: 10,
+    path: "page/:num/index.html"
   }))
   .use(excerpts())
   .use(drafts())
