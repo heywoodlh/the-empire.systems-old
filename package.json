@@ -11,7 +11,9 @@
     "metalsmith-clean-css": "^6.0.0",
     "metalsmith-drafts": "^0.0.1",
     "metalsmith-excerpts": "^1.2.0",
-    "metalsmith-collections": "^0.9.0"
+    "metalsmith-collections": "^0.9.0",
+    "metalsmith-paths": "^3.0.1",
+    "metalsmith-paginate": "^0.3.0"
   },
   "description": "https://www.the-empire.systems",
   "version": "1.0.0",

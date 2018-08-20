@@ -1,6 +1,9 @@
 ---
-layout: archive.html
+layout: page.html
 ---
+
+<p>
+</p>
 
 <p>
   Welcome to the Archive!
