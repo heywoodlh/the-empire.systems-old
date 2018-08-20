@@ -33,8 +33,11 @@
 	  <br>
           {{#each_upto all 8 }}
             <li>
-              <span class="date">{{ moment date lang="en" format="MMM-DD-YYYY" }} &mdash; {{ type }}</span>
+              <span class="date">{{ moment date lang="en" format="MMM-DD-YYYY" }} &mdash;</span>
+              <br>
               <span class="title"><a href="{{ path }}">{{ title }}</a></span>
+              <br>
+              <br>
             </li>
           {{/each_upto}}
         </ul>

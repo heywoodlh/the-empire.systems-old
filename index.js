@@ -46,7 +46,10 @@ Metalsmith(__dirname)
   }))
   .use(markdown())
   .use(layouts({
-    engine: 'handlebars'
+    engine: 'handlebars',
+    directory: './layouts',
+    pattern: ["*/*/*html","*/*html","*html"],
+    default: 'page.html'
   }))
   .use(excerpts())
   .use(drafts())
