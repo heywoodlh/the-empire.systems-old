@@ -190,7 +190,6 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 
 #content ul li
 { list-style-type: none;
-  background: url(bullet.png) no-repeat;
   margin: 0 0 6px 0; 
   padding: 0 0 4px 25px;
   line-height: 1.5em;}
@@ -290,3 +289,11 @@ table tr td
 { background: #F0EFE2;
   color: #47433F;
   border-top: 1px solid #FFF;}
+
+ul.recent 
+{   margin: 20px 0 0 0;
+    font-family: Trebuchet, sans-serif;
+    list-style-type: none;
+    color: grey;
+    font-size: 1.0rem;
+    padding: 0;}
