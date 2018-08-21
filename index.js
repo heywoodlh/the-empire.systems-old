@@ -33,7 +33,7 @@ Metalsmith(__dirname)
     port: 8080,
     verbose: true,
     http_error_files: {
-      404: "/404.html"
+      404: "/404/index.html"
     }
   }))
   .use(collections({
@@ -51,7 +51,14 @@ Metalsmith(__dirname)
     engine: 'handlebars',
     directory: './layouts',
     pattern: ["*/*/*html","*/*html","*html"],
-    default: 'page.html'
+    default: 'page.html',
+    partials: {
+            header: 'partials/header',
+            header_page: 'partials/header_page',
+            header_post: 'partials/header_post',
+            header_error: 'partials/header_error',
+            footer: 'partials/footer'
+    }
   }))
   .use(excerpts())
   .use(drafts())
