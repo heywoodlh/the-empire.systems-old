@@ -24,8 +24,6 @@ Metalsmith(__dirname)
     title: "The Empire",
     description: "Cybersecurity and Systems Administration",
     author: 'Spencer Heywood',
-    generator: "Metalsmith",
-    url: "http://www.metalsmith.io"
   })
   .source('./src')
   .destination('./build')
