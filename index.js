@@ -6,7 +6,9 @@ var Metalsmith = require('metalsmith'),
     drafts = require('metalsmith-drafts'),
     excerpts = require('metalsmith-excerpts'),
     collections = require('metalsmith-collections'),
-    handlebars = require('handlebars');
+    handlebars = require('handlebars'),
+    lunr = require('metalsmith-lunr'),
+    searchMeta = require('metalsmith-search-meta');
 
 handlebars.registerHelper('moment', require('helper-moment'));
 
@@ -54,14 +56,18 @@ Metalsmith(__dirname)
     default: 'page.html',
     partials: {
             header: 'partials/header',
-            header_page: 'partials/header_page',
             header_post: 'partials/header_post',
-            header_error: 'partials/header_error',
             footer: 'partials/footer'
     }
   }))
   .use(excerpts())
   .use(drafts())
+  .use(lunr())
+  .use(searchMeta(
+     {
+       path: 'searchMeta.json',
+       properties: ['title', 'date', 'author']   
+     }))
   .build(function(err, files) {
     if (err) { throw err; }
   });
