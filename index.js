@@ -1,6 +1,7 @@
 var Metalsmith = require('metalsmith'),
     serve = require('metalsmith-serve'),
     markdown = require('metalsmith-markdown'),
+    permalinks = require('metalsmith-permalinks'),
     layouts = require('metalsmith-layouts'),
     drafts = require('metalsmith-drafts'),
     excerpts = require('metalsmith-excerpts'),
@@ -43,6 +44,9 @@ Metalsmith(__dirname)
     }
   }))
   .use(markdown())
+  .use(permalinks({
+    relative: false
+  }))
   .use(layouts({
     engine: 'handlebars',
     directory: './layouts',
