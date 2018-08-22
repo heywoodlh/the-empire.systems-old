@@ -34,6 +34,7 @@ func main() {
 }
 ```
 
+
 #### All put together:
 
 ```
@@ -47,6 +48,7 @@ func main {
 
 }
 ```
+
 
 #### Run a go file:
 
@@ -70,16 +72,17 @@ I.E.
 
 ### Variables in Go:
 
-Variables are statically typed, meaning the type can't change once defined. There are different types of integer types that are possible:
-
 
 #### Go Data types: 
+
+Variables are statically typed, meaning the type can't change once defined. There are different types of integer types that are possible:
 
 [https://www.tutorialspoint.com/go/go_data_types.htm](https://www.tutorialspoint.com/go/go_data_types.htm)
 
 Ints are regular numbers. Look at the Go Data Type link for all the different type of 'int's that Go can use and what numbers can fit in which int type. 
 
 Floats are decimals. Look at the Go Data Type link for all the different type of floats that Go can use and what numbers can fit in which float type.
+
 
 
 #### Variable syntax:
@@ -90,4 +93,8 @@ I.E.
 
 `var myAge int = 12`
 
+
+Go can also intelligently assign data types to variables:
+
+`randNum := 3`
  
