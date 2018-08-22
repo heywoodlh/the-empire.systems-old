@@ -43,7 +43,7 @@ Metalsmith(__dirname)
       pattern: 'posts/*.md',
       sortBy: 'date',
       reverse: true
-    }
+    },
     notes: {
       pattern: 'notes/*.md',
       sortBy: 'date',
