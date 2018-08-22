@@ -44,6 +44,11 @@ Metalsmith(__dirname)
       sortBy: 'date',
       reverse: true
     }
+    notes: {
+      pattern: 'notes/*.md',
+      sortBy: 'date',
+      reverse: true
+    }
   }))
   .use(markdown())
   .use(permalinks({
