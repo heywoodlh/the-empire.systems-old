@@ -1,0 +1,17 @@
+{{> header }}
+        <ul class="recent">
+	  <br>
+          {{#each_upto notes 9 }}
+            <li>
+              <span class="date">{{ moment date lang="en" format="MMM-DD-YYYY" }} &mdash;</span>
+              <br>
+              <span class="title"><a href="{{ path }}">{{ title }}</a></span>
+              <br>
+              <br>
+            </li>
+          {{/each_upto}}
+        </ul>
+ 
+        {{{ contents }}}
+      
+{{> footer }}

@@ -1,5 +1,4 @@
 ---
-layout: page.html
+layout: notes.html
 ---
 
-Testing
