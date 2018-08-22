@@ -79,13 +79,13 @@ Variables are statically typed, meaning the type can't change once defined. Ther
 
 [https://www.tutorialspoint.com/go/go_data_types.htm](https://www.tutorialspoint.com/go/go_data_types.htm)
 
-Ints are regular numbers. Look at the Go Data Type link for all the different type of 'int's that Go can use and what numbers can fit in which int type. 
+`Int`s are regular numbers. Look at the Go Data Type link for all the different type of 'int's that Go can use and what numbers can fit in which int type. 
 
-Floats are decimals. Look at the Go Data Type link for all the different type of floats that Go can use and what numbers can fit in which float type.
+`float`s are decimals. Look at the Go Data Type link for all the different type of floats that Go can use and what numbers can fit in which float type.
 
 
 
-#### Variable syntax:
+#### Variable assignment syntax:
 
 `var [varName] [type] = [value]`
 
@@ -93,8 +93,63 @@ I.E.
 
 `var myAge int = 12`
 
+OR
+
+`var myName string = 'Cool Guy'`
+
+OR
+
+`const myAge int = 12`
+
 
 Go can also intelligently assign data types to variables:
 
 `randNum := 3`
- 
+
+
+Multiple variables can also be assigned at once:
+
+```
+var (
+    varOne = 3
+    varTwo = 4
+    varThree = 8
+)
+```
+
+
+
+
+### Println:
+
+`Println` is a function in the "fmt" module. It can be used to print lines, do arithmatic, etc.
+
+
+#### Print line:
+
+`fmt.Println('my line of strings')`
+
+
+#### Evaluate math problem:
+
+```
+func main {
+    var myAge int = 20
+    var yourAge int = 32
+
+    fmt.Println(yourAge - myAge)
+
+```
+
+
+
+#### Types of math operations:
+
++ == Addition
+- == Subtraction
+* == Multiplication
+/ == Division
+% == Modulus (return remainder)
+
+
+
