@@ -97,7 +97,7 @@ Assign int
 
 OR string
 
-`var myName string = 'Cool Guy'`
+`var myName string = "Cool Guy"`
 
 OR const
 
@@ -133,7 +133,7 @@ var (
 
 #### Print line:
 
-`fmt.Println('my line of strings')`
+`fmt.Println("my line of strings")`
 
 
 #### Evaluate math problem:
@@ -160,7 +160,6 @@ func main() {
 
 #### Variable substitution:
 
-%s == string
 %f == float
 %d == int
 
@@ -176,9 +175,9 @@ package main
 import "fmt"
 
 func main() {
-    var myString string = 'super cool guy'
+    var yourAge int = 12
     
-    fmt.Println('Spencer is a %s', myString)
+    fmt.Printf("You are  %d years old ", yourAge)
 } 
 ```
 
@@ -189,3 +188,33 @@ func main() {
 `\n` == New line
 
 
+
+
+### Logical Operators:
+
+&& == AND
+|| == OR
+! == NOT
+
+
+
+
+### For loops:
+
+```
+func main() {
+
+    var i int = 1
+    
+    for i <= 10 {
+        fmt.Println(i)
+        i++
+    }
+
+}
+```
+
+
+
+
+###
