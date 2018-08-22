@@ -89,17 +89,21 @@ Variables are statically typed, meaning the type can't change once defined. Ther
 
 `var [varName] [type] = [value]`
 
-I.E.
+Assign int
 
 `var myAge int = 12`
 
-OR
+OR string
 
 `var myName string = 'Cool Guy'`
 
-OR
+OR const
 
 `const myAge int = 12`
+
+OR boolean
+
+`var isTrue bool = false`
 
 
 Go can also intelligently assign data types to variables:
@@ -122,7 +126,7 @@ var (
 
 ### Println:
 
-`Println` is a function in the "fmt" module. It can be used to print lines, do arithmatic, etc.
+`Println` is a function in the "fmt" module. It can be used to print lines, do arithmatic, etc. Very similar to Python's `print` function.
 
 
 #### Print line:
@@ -151,5 +155,35 @@ func main {
 / == Division
 % == Modulus (return remainder)
 
+
+#### Variable substitution:
+
+%s == string
+%f == float
+%d == int
+
+%T == type
+%t == boolean
+%b == binary
+%c == character code
+%x == hex
+%e == scientific notation
+
+```
+package main
+import "fmt"
+
+func main {
+    var myString string = 'super cool guy'
+    
+    fmt.Println('Spencer is a %s', myString)
+} 
+```
+
+
+
+#### Other:
+
+`\n` == New line
 
 
