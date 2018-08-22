@@ -42,7 +42,7 @@ package main
 import "fmt"
 
 //my main function
-func main {
+func main() {
 
     fmt.Println("hello world")
 
@@ -139,7 +139,7 @@ var (
 #### Evaluate math problem:
 
 ```
-func main {
+func main() {
     var myAge int = 20
     var yourAge int = 32
 
@@ -175,7 +175,7 @@ func main {
 package main
 import "fmt"
 
-func main {
+func main() {
     var myString string = 'super cool guy'
     
     fmt.Println('Spencer is a %s', myString)
