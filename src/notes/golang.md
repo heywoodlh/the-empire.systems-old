@@ -152,22 +152,32 @@ func main() {
 #### Types of math operations:
 
 + == Addition
+
 - == Subtraction
+
 * == Multiplication
+
 / == Division
+
 % == Modulus (return remainder)
 
 
 #### Variable substitution:
 
 %f == float
+
 %d == int
 
 %T == type
+
 %t == boolean
+
 %b == binary
+
 %c == character code
+
 %x == hex
+
 %e == scientific notation
 
 ```
@@ -193,7 +203,9 @@ func main() {
 ### Logical Operators:
 
 && == AND
+
 || == OR
+
 ! == NOT
 
 
