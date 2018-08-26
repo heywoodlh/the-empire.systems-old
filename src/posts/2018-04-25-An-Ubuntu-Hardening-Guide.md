@@ -117,8 +117,8 @@ The application firewall I would recommend is OpenSnitch which is a fork of Litt
 I will include the steps as well from that article: 
 1. Make sure you have the backports repository enabled if you're not using the latest Ubuntu version (18.04), by going to Software & Updates and checking the Unsupported updates (backports) option on the Updates tab.
 2. Setup Go environment - Set up the GOPATH environment variable: 
-```echo "export GOPATH=\$HOME/.go" >> ~/.bashrc 
-echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin:\$HOME/.local/bin:\$HOME/.bin" >> ~/.bashrc source ~/.bashrc 
+```echo "export GOPATH=\$HOME/.go" >> ~/.bashrc; 
+echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin:\$HOME/.local/bin:\$HOME/.bin" >> ~/.bashrc; source ~/.bashrc 
 ```
 3. Install all OpenSnitch dependencies: `sudo apt-get install golang-go python3-pip python3-setuptools protobuf-compiler libpcap-dev libnetfilter-queue-dev python-pyqt5 git-core` 
 
