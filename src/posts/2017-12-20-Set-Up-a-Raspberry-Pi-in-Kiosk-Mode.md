@@ -45,7 +45,7 @@ Change this line of code: `WEBSITE='google.com'` to equal whatever website you w
 
 ### Configure LXDE to Run the Script on Login:
 
-LXDE is the desktop environment for Raspbian at the time of this writing. In order to configure it to run a script on login we need to edit the LXDE autostart file for the pi user: nano `/home/pi/.config/lxsession/LXDE-pi/autostart`. Assuming the kiosk.sh script is in `/home/pi/kiosk.sh`, this is the line you would add to the end of that autostart file: `@/home/pi/kiosk.sh`   
+LXDE is the desktop environment for Raspbian at the time of this writing. In order to configure it to run a script on login we need to edit the LXDE autostart file for the pi user: `nano /home/pi/.config/lxsession/LXDE-pi/autostart`. Assuming the kiosk.sh script is in `/home/pi/kiosk.sh`, this is the line you would add to the end of that autostart file: `@/home/pi/kiosk.sh`   
 
 Now, if the pi user is set to autologin, Chromium will open fullscreen in kiosk mode and will display whatever website was configured in kiosk.sh.  
 
