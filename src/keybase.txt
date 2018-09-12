@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/bin_sh
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://the-empire.systems
+  * I am bin_sh (https://keybase.io/bin_sh) on keybase.
+  * I have a public key ASDBFZXBIhcOXr-7Qrq1XS-hkWw9vCgoQB93iG9FL5Pz-Ao
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120c11595c122170e5ebfbb42bab55d2fa1916c3dbc2828401f77886f452f93f3f80a",
+      "host": "keybase.io",
+      "kid": "0120c11595c122170e5ebfbb42bab55d2fa1916c3dbc2828401f77886f452f93f3f80a",
+      "uid": "9455437e4cb0c22f2452c9689c70ca19",
+      "username": "bin_sh"
+    },
+    "merkle_root": {
+      "ctime": 1536784833,
+      "hash": "b379382ad8ee78319e81d764c1eb9f5fbecec8b1fd1be51da1e19495081f1cd1c66f9982c16d07a5cd1dfebba0fa6b25f77b89be3be4ae8aa9a85a31b2e5efc0",
+      "hash_meta": "295a5c0a1be3da6f7cc378927532e345500e5c21302f4fc195d557db59b01cca",
+      "seqno": 3601309
+    },
+    "service": {
+      "entropy": "MBJb2uU5/1AiV5LmruXLTtdd",
+      "hostname": "the-empire.systems",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "2.7.0"
+  },
+  "ctime": 1536784880,
+  "expire_in": 504576000,
+  "prev": "4f85df0f334f8d0976b962621efe023c0b914b53dda648b144e66d2e0f229db6",
+  "seqno": 4,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgwRWVwSIXDl6/u0K6tV0voZFsPbwoKEAfd4hvRS+T8/gKp3BheWxvYWTESpcCBMQgT4XfDzNPjQl2uWJiHv4CPAuRS1PdpkixROZtLg8inbbEIAnkj/oQfGNUNIqo1Qp4aXVG6q0mv4ab0R+45gSFu11yAgHCo3NpZ8RAL6WnC4UAcci4qAqDsZpJgVHgax0ie1oM2RSnsjonaNozhbqWq8mWiWsas19ltkJDGP7daZW8vdqbCKMGhj+HC6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEICwpPfbfng+JFOeRNXpbrPPSCSfHaxrOBdwjlb1ImDqUo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/bin_sh
+
+==================================================================
