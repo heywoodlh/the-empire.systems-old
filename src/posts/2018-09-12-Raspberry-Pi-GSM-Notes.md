@@ -2,7 +2,7 @@
 title: 'Raspberry Pi GSM Modem Notes'
 layout: post.html
 date: 2018-09-12
-draft: true
+draft: false
 ---
 
 
