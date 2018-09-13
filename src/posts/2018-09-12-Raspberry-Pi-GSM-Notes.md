@@ -64,4 +64,8 @@ According to the Waveshare wiki the baud rate is 115200. Connect to the device u
 
 `sudo screen /dev/ttyUSB1 115200`
 
-*Note, the PWRKEY button must be pressed after each reboot of the pi or hat in order to connect to it. Just make sure the PWR light is solid red, the STA light is solid and the NET light flashes every three seconds.
+*Note, the PWRKEY button must be pressed after each reboot of the pi or hat in order to connect to it. Just make sure the PWR light is solid red, the STA light is solid and the NET light flashes every three seconds.\*
+
+Once connected to the GSM modem, you can check the status of the SIM using the `AT` command which should return `OK` if it is connected to a network. My SIM connected once I pressed the PWRKEY for one second so I did not need to troubleshoot connection issues.
+
+Assuming all went well, the GSM modem should be suitable to send/receive texts, calls and data.
