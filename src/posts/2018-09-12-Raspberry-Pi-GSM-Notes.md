@@ -112,10 +112,9 @@ positional arguments:
 optional arguments:
   -h, --help   show this help message and exit
 ```
-
-
-
-
+\n
+\n
+\n
 `send` help message:
 
 
@@ -155,8 +154,9 @@ optional arguments:
   -i TTY, --interface TTY
                         serial interface
 ```
-
-
+\n
+\n
+\n
 
 `read` example command:
 
@@ -166,10 +166,9 @@ optional arguments:
 
 This is my awesome text message!
 ```
-
-
-
-
+\n
+\n
+\n
 
 #### Usage of `call.py`:
 
@@ -192,8 +191,9 @@ positional arguments:
 optional arguments:
   -h, --help      show this help message and exit
 ```
-
-
+\n
+\n
+\n
 
 `make` requires two arguments: `-i` for the serial interface (`/dev/ttyUSB1`), `-r` for the number that will be called (+1xxxxxxxxxx).
 
@@ -211,9 +211,9 @@ optional arguments:
   -r NUM, --recipient NUM
                         phone number to call
 ```
-
-
-
+\n
+\n
+\n
 
 `make` example command:
 
@@ -245,7 +245,9 @@ optional arguments:
   -i TTY, --interface TTY
                         serial interface
 ```
-
+\n
+\n
+\n
 
 `receive` example command:
 
