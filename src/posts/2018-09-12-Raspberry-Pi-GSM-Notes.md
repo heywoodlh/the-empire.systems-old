@@ -23,7 +23,7 @@ Here are some notes to help fellow tinkerers as I found very little helpful info
 ### Installation: 
 
 
-<img src="/images/raspberry-pi-gsm.jpg" width="400" height="400">
+<img src="/images/raspberry-pi-gsm.jpg" width="700" height="400">
 
 Prior to installation, make sure your SIM card is activated and installed on the bottom side of the hat.
 
