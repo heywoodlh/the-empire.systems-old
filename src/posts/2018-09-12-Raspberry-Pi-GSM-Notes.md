@@ -23,8 +23,9 @@ Here are some notes to help fellow tinkerers as I found very little helpful info
 ### Installation: 
 
 
-![alt text](https://the-empire.systems/images/raspberry-pi-gsm.jpg "Raspberry Pi GSM module")
+<img src="/images/raspberry-pi-gsm.jpg" width="400" height="400">
 
+Prior to installation, make sure your SIM card is activated and installed on the bottom side of the hat.
 
 Place the shield on top of the Pi using the corresponding connector that goes with the pins similar to what is shown in the above photo.
 
@@ -35,6 +36,8 @@ If you'd like to connect another host to the hat, use the USB TO UART connection
 
 
 ### Connect the Modem to the Network and Connect Directly to the Modem:
+
+I used a Ting GSM SIM card. In order to prep the SIM card, I merely needed to make sure it was activated prior to installing the Hat.
 
 Per the wiki article, the CP2102 driver must be installed on the host that will connect to the SIM. Fortunately, this driver has been included in the Linux kernel since 2.6 and can be enabled with `sudo modprobe cp210x`. Check that the module has been enabled with `lsmod | grep 'cp210x'`.
 
@@ -60,3 +63,5 @@ According to the Waveshare wiki the baud rate is 115200. Connect to the device u
 
 
 `sudo screen /dev/ttyUSB1 115200`
+
+*Note, the PWRKEY button must be pressed after each reboot of the pi or hat in order to connect to it. Just make sure the PWR light is solid red, the STA light is solid and the NET light flashes every three seconds.
