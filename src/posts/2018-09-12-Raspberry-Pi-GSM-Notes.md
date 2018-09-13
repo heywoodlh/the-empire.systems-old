@@ -111,10 +111,10 @@ positional arguments:
 
 optional arguments:
   -h, --help   show this help message and exit
-```
-\n
-\n
-\n
+```    
+ 
+ 
+ 
 `send` help message:
 
 
@@ -131,7 +131,7 @@ optional arguments:
                         phone number to send to
   -m MES, --message MES
                         message contents
-```
+```    
 
 
 `send` example:
@@ -153,10 +153,10 @@ optional arguments:
   -h, --help            show this help message and exit
   -i TTY, --interface TTY
                         serial interface
-```
-\n
-\n
-\n
+```    
+ 
+ 
+ 
 
 `read` example command:
 
@@ -165,10 +165,10 @@ optional arguments:
 +CMGL: 1,"REC READ","+1xxxxxxxxxx","","18/09/12,10:50:11-24"
 
 This is my awesome text message!
-```
-\n
-\n
-\n
+```    
+ 
+ 
+ 
 
 #### Usage of `call.py`:
 
@@ -190,10 +190,10 @@ positional arguments:
 
 optional arguments:
   -h, --help      show this help message and exit
-```
-\n
-\n
-\n
+```    
+ 
+ 
+ 
 
 `make` requires two arguments: `-i` for the serial interface (`/dev/ttyUSB1`), `-r` for the number that will be called (+1xxxxxxxxxx).
 
@@ -210,10 +210,10 @@ optional arguments:
                         serial interface
   -r NUM, --recipient NUM
                         phone number to call
-```
-\n
-\n
-\n
+```    
+ 
+ 
+ 
 
 `make` example command:
 
@@ -244,10 +244,10 @@ optional arguments:
   -h, --help            show this help message and exit
   -i TTY, --interface TTY
                         serial interface
-```
-\n
-\n
-\n
+```    
+ 
+ 
+ 
 
 `receive` example command:
 
