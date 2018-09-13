@@ -112,8 +112,9 @@ positional arguments:
 optional arguments:
   -h, --help   show this help message and exit
 ```    
- 
- 
+<br>
+<br> 
+<br>
  
 `send` help message:
 
@@ -132,6 +133,9 @@ optional arguments:
   -m MES, --message MES
                         message contents
 ```    
+<br>
+<br>
+<br>
 
 
 `send` example:
@@ -154,7 +158,9 @@ optional arguments:
   -i TTY, --interface TTY
                         serial interface
 ```    
- 
+<br>
+<br>
+<br>
  
  
 
@@ -166,8 +172,9 @@ optional arguments:
 
 This is my awesome text message!
 ```    
- 
- 
+<br>
+<br>
+<br>
  
 
 #### Usage of `call.py`:
@@ -191,7 +198,9 @@ positional arguments:
 optional arguments:
   -h, --help      show this help message and exit
 ```    
- 
+<br>
+<br>
+<br>
  
  
 
@@ -211,7 +220,9 @@ optional arguments:
   -r NUM, --recipient NUM
                         phone number to call
 ```    
- 
+<br>
+<br>
+<br>
  
  
 
@@ -245,7 +256,9 @@ optional arguments:
   -i TTY, --interface TTY
                         serial interface
 ```    
- 
+<br>
+<br>
+<br>
  
  
 
