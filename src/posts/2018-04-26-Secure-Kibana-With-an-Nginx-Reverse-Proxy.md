@@ -23,6 +23,7 @@ sudo sh -c "openssl passwd -apr1 >> /etc/nginx/.htpasswd"
 This process can be repeated for as many users as you would like. If you would like to remove the users, remove their usernames/password entries from `/etc/nginx/.htpasswd`. 
 
 4. Create the nginx configuration file: Below is an example configuration file stored at `/etc/nginx/sites-available/kibana`. Modify the `server_name` directive to point to your IP or hostname instead of 'myhostname': 
+
 ```
 server { 
     listen 443 ssl; 
@@ -45,6 +46,8 @@ server {
       proxy_redirect off; 
     } 
 } 
+```
+<br>
 
 If you would like to have https running on a port different than 443, modify the `listen 443 ssl;` directive and change 443 to a different value. You will have to change the 'server.host' directive in `/etc/kibana/kibana.yml` to point to `localhost` and then restart Kibana. Enable the nginx configuration using a symlink:
 ```
