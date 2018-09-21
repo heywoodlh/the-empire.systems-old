@@ -16,10 +16,12 @@ sudo openssl req -x509 -nodes -days 365 - newkey rsa:2048 -keyout /etc/ssl/priva
 ```
 sudo sh -c "echo -n 'myusername:' >> /etc/nginx/.htpasswd"
 ``` 
+<br>
 Then create the user's password and append the encrypted value to the username: 
 ```
 sudo sh -c "openssl passwd -apr1 >> /etc/nginx/.htpasswd"
 ```
+<br>
 This process can be repeated for as many users as you would like. If you would like to remove the users, remove their usernames/password entries from `/etc/nginx/.htpasswd`. 
 
 4. Create the nginx configuration file: Below is an example configuration file stored at `/etc/nginx/sites-available/kibana`. Modify the `server_name` directive to point to your IP or hostname instead of 'myhostname': 
@@ -53,13 +55,14 @@ If you would like to have https running on a port different than 443, modify the
 ```
 sudo ln -s /etc/nginx/sites-available/kibana /etc/nginx/sites-enabled/kibana 
 ```
+<br>
 
 5. Enable and restart nginx: 
 ```
 sudo systemctl enable nginx.service 
 sudo systemctl restart nginx.service 
 ```
-
+<br>
 Now Kibana will be accessible on port 443 of your server. All you need to do is go into a web browser and go to https://your-ip-or-hostname.com and it should be running. 
 
 Once you have verified this is running, I would recommend changing the `server.host` directive in `/etc/kibana/kibana.yml` to point to `localhost` and then restart Kibana.
