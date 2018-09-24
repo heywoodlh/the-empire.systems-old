@@ -297,3 +297,8 @@ ul.recent
     color: grey;
     font-size: 1.0rem;
     padding: 0;}
+
+code 
+{
+	    word-wrap: break-word;
+}
