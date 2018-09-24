@@ -54,28 +54,28 @@ optional arguments:
                         Prefix of index
   --test                do not upload for testing
 ```
-
+<br>
 
 Edit the config file at `/opt/Port-Crawler-Py/masscan.conf` to reflect the configuration parameters you'd like `masscan` to use (IP addresses, ports, etc). Run `port-crawler.py` using the config file:
 
 ```
 sudo /opt/Port-Crawler-Py/port-crawler.py --config /opt/Port-Crawler-Py/masscan.conf --index_prefix portscans
 ```
-
+<br>
 
 Example command not using a config file:
 
 ```
 sudo /opt/Port-Crawler-Py/port-crawler.py --rate 1000 --ip 192.168.0.1 192.168.0.10 192.168.2.0/24 --ports 0-1024 3389 4786 3306 5432 1433 8080 11211 7001 --index_prefix portscans
 ```
-
+<br>
 
 Set the scan to repeat itself on a regular basis -- at 1:00 a.m. every day -- with a cronjob (`sudo crontab -e`), changing the IP addresses and ports as you'd like:
 
 ```
 0 1 * * * /opt/Port-Crawler-Py/port-crawler.py --config /opt/Port-Crawler-Py/masscan.conf --index_prefix portscans
 ```
-
+<br>
 
 ## Configuring Kibana:
 
@@ -109,7 +109,7 @@ In order to import it go to Management > Saved Objects > Import. Download `kiban
 sudo apt-get update
 sudo apt-get install openjdk-8-jdk -y
 ```
-
+<br>
 
 ### Elastic repository install:
 
@@ -117,7 +117,7 @@ sudo apt-get install openjdk-8-jdk -y
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" > /etc/apt/sources.list.d/elastic-6.x.list
 ```
-
+<br>
 
 ### Elasticsearch install:
 
@@ -129,7 +129,7 @@ sudo sed -i 's/#network.host: 192.168.0.1/network.host: 127.0.0.1/g' /etc/elasti
 sudo systemctl enable elasticsearch.service
 sudo systemctl start elasticsearch.service
 ```
-
+<br>
 
 ### Kibana install:
 
@@ -141,7 +141,7 @@ sudo sed -i 's/#server.host: "localhost"/server.host: '"$IP_OR_HOSTNAME"'/g' /et
 sudo systemctl enable kibana.service
 sudo systemctl restart kibana.service
 ```
-
+<br>
 
 ### Masscan install:
 
@@ -154,14 +154,14 @@ cd masscan
 make
 sudo cp bin/masscan /usr/bin/
 ```
-
+<br>
 
 ### Install Python3:
 
 ```
 sudo apt-get install python3 python3-pip -y
 ```
-
+<br>
 
 ### Install Port-Crawler-Py:
 
@@ -172,4 +172,4 @@ git clone https://github.com/heywoodlh/Port-Crawler-Py
 cd Port-Crawler-Py/
 sudo pip3 install -r /opt/Port-Crawler-Py/requirements.txt
 ```
-
+<br>
