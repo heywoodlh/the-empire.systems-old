@@ -106,6 +106,7 @@ LAUNCH
 	Path: /
 	Target: wordpress/wordpress
 	Port: 80
+<br>
 
 
 ⋅⋅* Add a service rule for LE to verify if using HTTP for domain name verification with the following configuration:
@@ -117,7 +118,7 @@ LAUNCH
 	Path: /.well-known/acme-challenge
 	Target: letsencrypt/letsencrypt
 	Port: 80
-
+<br>
 
 ⋅⋅* Add a service rule for your domain name with the following configuration:
 
@@ -128,5 +129,6 @@ LAUNCH
 	Path: /
 	Target: wordpress/wordpress
 	Port: 80
-	
+<br>
+
 	*At the bottom of the page, an SSL Termination Tab should have come up. Select the SSL certificate you created in Step 1 of this section.
