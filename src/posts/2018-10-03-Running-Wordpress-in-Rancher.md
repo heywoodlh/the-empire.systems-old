@@ -1,6 +1,7 @@
 ---
 layout: post.html
 date: 2018-10-3
+title: 'Running Wordpress in RancherOS'
 collections: all, server, linux, docker
 ---
 
