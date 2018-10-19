@@ -18,6 +18,7 @@ Then, load the OpenVAS module:
 ```
 msf> load openvas 
 ```
+<br>
 
 Display the OpenVAS module's help page: 
 ```
@@ -63,21 +64,26 @@ msf > openvas_help
 [*] openvas_report_import         Imports an OpenVAS report specified by ID
 [*] openvas_report_download       Downloads an OpenVAS report specified by ID
 ```
+<br>
 
 The first thing we need to do is connect to OpenVAS: 
 ```
-msf > openvas_connect 127.0.0.1 9390 
+msf > openvas_connect <admin> <password> 127.0.0.1 9390 
 ok 
 ```
+<br>
+
 Now, create a target: 
 ```
 msf > openvas_target_create host1 192.168.1.50 'My First Host'
 ```
+<br>
 
 List your targets: 
 ```
 msf > openvas_target_list
 ```
+<br>
 
 Before we can create a task, let's also list the scan configs that can be used as we will need that to create the task: 
 ```
@@ -100,12 +106,16 @@ daba56c8-73ec-11df-a475-002264764cea Full and fast
 
 The command for creating a task is this: 
 ```
-msf > openvas_task_create
-```     
-If we were to use the ID for host1 from my example openvas_target_list above and a 'Full and fast' scan, this would be the command: 
+msf > openvas_task_create <scan name> 'Scan details' <scan ID> <target ID>
+```
+     
+If we were to use the ID for host1 from my example openvas_target_list above and a 'Full and fast' scan, this would be the command:
+ 
 ```
 msf > openvas_task_create scan1 'My first scan' daba56c8-73ec-11df-a475-002264764cea ddcf992e-c705-455c-8fb3-1fdb4fb5a672 
 ```
+<br>
+
 Once the task has been created, list it: 
 ```
 msf > openvas_task_list
@@ -174,11 +184,13 @@ list.
 c402cc3e-b531-11e1-9163-406186ea4fc5  PDF            pdf        Portable
 Document Format report.
 ```
+<br>
 
 The syntax for the report download command is this: 
 ```
-msf > openvas_report_download 
+msf > openvas_report_download <report ID> <format ID> <path to directory> <file name>
 ```   
+<br>
 
 If we were to use the above report ID and TXT format and download the report to the file `~/Downloads/report.txt`, this would be the command used: 
 ```
