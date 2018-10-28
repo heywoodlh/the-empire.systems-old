@@ -30,13 +30,7 @@ To actually get my machine not to crash, I had to set a kernel parameter in Grub
 
 ## The Long-Term Fix:
 
-_Downgrade to a kernel that is older than kernel 4.16 (in this case, the LTS):_
-
-_`sudo pacman -S linux-lts`_
-
-_`sudo pacman -R linux`_
-
-_`sudo reboot`_
+_Downgrade to a kernel that is older than kernel 4.16 (in this case, the LTS)._
 
 I had to set the `i915.modeset=0` parameter in the Grub boot menu on my fresh install once again. Upon figuring out what the issue was I decided to install the `linux-lts` package through `pacman`:
 
