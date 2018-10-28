@@ -17,7 +17,7 @@ I am an avid Arch Linux user. I also own a Dell XPS 12 which I use as a more por
 
 I kept running into a specific issue: when booting into Arch Linux, my computer would die. It was frustrating and I found NO help online so that's why I'm posting the fix.
 
-After a very long period of trial and error and perusing through every forum known to man I found the source of the issue: in all Linux kernels beginning at 4.12 Intel began to include the i985 graphics driver in the Linux kernel which apparently is not compatible with the Dell XPS 12. From what I have learned, beginning at 4.16 the code in the i985 driver was changed and lots of other machines began to have issues with the driver (maybe earlier than 4.16 -- I'm at the 4.14 LTS at the time of writing and not have issues).
+After a very long period of trial and error and perusing through every forum known to man I found the source of the issue: in all Linux kernels beginning at 4.12 Intel began to include the i985 graphics driver in the Linux kernel and starting at kernel 4.16 the driver apparently had code which is not compatible with the Dell XPS 12 (maybe earlier than 4.16 -- I'm at the 4.14 LTS at the time of writing and am not having issues).
 
  
 
