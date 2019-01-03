@@ -1,5 +1,4 @@
 var Metalsmith = require('metalsmith'),
-    serve = require('metalsmith-serve'),
     markdown = require('metalsmith-markdown'),
     permalinks = require('metalsmith-permalinks'),
     layouts = require('metalsmith-layouts'),
@@ -31,13 +30,6 @@ Metalsmith(__dirname)
   .source('./src')
   .destination('./build')
   .clean(false)
-  .use(serve({
-    port: 8080,
-    verbose: true,
-    http_error_files: {
-      404: "/404/index.html"
-    }
-  }))
   .use(collections({
     all: {
       pattern: 'posts/*.md',
