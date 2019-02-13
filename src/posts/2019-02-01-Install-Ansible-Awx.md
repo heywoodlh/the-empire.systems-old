@@ -70,7 +70,7 @@ collection: all, linux
 
 
 
-2. Edit the following values in the "inventory" file (set with any values desired – not the default):
+2. Edit the following values in the "inventory" file and set them with any values desired – not the default -- especially the postgres_data_dir (I typically set postgres_data_dir to /opt/pgdocker/):
 
     ```
     shost_port=80
@@ -79,7 +79,7 @@ collection: all, linux
     pg_password=awxpass
     pg_database=awx
     pg_port=5432
-    postgres_data_dir=/opt/pgdocker
+    postgres_data_dir=/tmp/pgdocker
     ...
     rabbitmq_password=awxpass
     rabbitmq_erlang_cookie=cookiemonster
@@ -101,5 +101,4 @@ collection: all, linux
 
 
 
-<br>
-The install should be complete and the web interface should be accessible on the remote server on whatever port was specified in the inventory file in Step 2.
+Once the `ansible-playbook` command completes, the install should be complete and the web interface should be accessible on the remote server on whatever port was specified in the inventory file in Step 2.
