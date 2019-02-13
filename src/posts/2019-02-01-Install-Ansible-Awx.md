@@ -1,5 +1,5 @@
 ---
-title: 'Install Ansible Awx'
+title: 'Install Ansible Awx on Ubuntu'
 date: 2019-02-01
 autotoc: true
 excerpt: true
@@ -10,10 +10,53 @@ collection: all, linux
 
 ## Prerequisites:
 
-    - Python and pip installed: `sudo apt-get install python python-pip`
-    - Docker (latest version) installed: (https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-    - Docker python module installed: `sudo pip install docker`
-    - Ansible (latest version) installed: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#latest-releases-via-apt-ubuntu
+1. Install Python and Python pip: 
+    
+    ```
+    sudo apt-get install python python-pip
+    ```
+
+
+
+
+2. Docker (latest version) installed:
+
+    ```
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 
+    sudo add-apt-repository \
+      "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+      $(lsb_release -cs) \
+      stable"
+    
+    
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+    ```
+
+
+
+
+3. Docker python module installed: 
+    
+    ```
+    sudo pip install docker
+    ```
+
+
+
+
+4. Ansible (latest version) installed: 
+    
+    ```
+    sudo apt-get update
+    sudo apt-get install software-properties-common -y
+    sudo apt-add-repository --yes --update ppa:ansible/ansible
+    sudo apt-get install ansible -y
+    ```
+
+
+
+
 
 
 ## Installation:
