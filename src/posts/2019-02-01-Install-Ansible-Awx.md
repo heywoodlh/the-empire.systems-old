@@ -73,7 +73,7 @@ collection: all, linux
 2. Edit the following values in the "inventory" file and set them with any values desired – not the default -- especially the postgres_data_dir (I typically set postgres_data_dir to /opt/pgdocker/):
 
     ```
-    shost_port=80
+    host_port=80
     ...
     pg_username=awx
     pg_password=awxpass
