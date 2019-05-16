@@ -5,8 +5,9 @@ const routes = [
         component: import('./routes/Home.svelte'),
     },
     {
-        to: 'https://github.com/heywoodlh/the-empire.systems/tree/master/src/content',
-        name: 'Posts',
+        to: '/:id',
+        name: 'Post',
+        component: import('./routes/Post.svelte'),
     },
     {
         to: 'https://github.com/heywoodlh/the-empire.systems/tree/master/src/archive',
