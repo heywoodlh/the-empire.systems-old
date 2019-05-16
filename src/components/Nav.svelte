@@ -47,7 +47,7 @@
     <ul>
         <li class="nav-item"><Link to="/" name="Home" /></li>
         <li class="nav-item">
-            <a href="https://github.com/heywoodlh/the-empire.systems/tree/master/src/posts">Posts</a>
+            <a href="https://github.com/heywoodlh/the-empire.systems/tree/master/src/content">Posts</a>
         </li>
         <li class="nav-item">
             <a href="https://github.com/heywoodlh/the-empire.systems/tree/master/src/archive">Archive</a>
