@@ -1,30 +1,33 @@
 {
   "name": "the-empire.systems",
-  "private": true,
-  "dependencies": {
-    "handlebars": "^4.0.5",
-    "metalsmith": "^2.1.0",
-    "metalsmith-serve": "^0.0.7",
-    "metalsmith-layouts": "^1.4.1",
-    "metalsmith-markdown": "^0.2.1",
-    "metalsmith-drafts": "^0.0.1",
-    "metalsmith-excerpts": "^1.2.0",
-    "metalsmith-collections": "^0.9.0",
-    "metalsmith-pagination": "^1.4.0",
-    "clean-css": "^4.2.1"
-  },
-  "description": "https://www.the-empire.systems",
-  "version": "1.0.1",
-  "main": "index.js",
-  "devDependencies": {},
-  "author": "Spencer Heywood",
-  "license": "MIT",
+  "version": "0.0.1",
+  "description": "the-empire.systems using Scant.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heywoodlh/the-empire.systems.git"
+    "url": "git+https://github.com/heywoodlh/the-empire.systems"
   },
+  "scripts": {
+    "start": "sirv public -s",
+    "build": "scant build"
+  },
+  "keywords": [
+    "scant",
+    "static",
+    "site",
+    "svelte"
+  ],
+  "author": "heywoodlh",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/heywoodlh/the-empire.systems/issues"
   },
-  "homepage": "https://github.com/heywoodlh/the-empire.systems"
+  "homepage": "https://github.com/heywoodlh/the-empire.systems",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "scant": "0.0.3",
+    "shimport": "^1.0.0",
+    "sirv-cli": "^0.4.2",
+    "svelte": "^3.3.0",
+    "svelte-routes": "0.0.4"
+  }
 }
