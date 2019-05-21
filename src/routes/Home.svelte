@@ -14,6 +14,7 @@
             : dateA.isSame(dateB) ? 0
             : -1;
         });
+    };
 </script>
 
 <style>
