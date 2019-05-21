@@ -6,7 +6,7 @@
     import moment from 'moment';
 
     onMount(async () => {
-    tmpPosts = await fetch(`/content/__blog-blob.json`).then(r => r.json());
+    tmpPosts = await fetch("/content/__blog-blob.json").then(r => r.json());
         posts = tmpPosts.sort((a, b) => {
             dateA = moment(a.date);
             dateB = moment(b.date);
