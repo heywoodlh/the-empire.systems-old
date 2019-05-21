@@ -6,7 +6,14 @@
     import moment from 'moment';
 
     onMount(async () => {
-        posts = await fetch(`/content/__blog-blob.json`).then(r => r.json());
+    tmpPosts = await fetch(`/content/__blog-blob.json`).then(r => r.json());
+        posts = tmpPosts.sort((a, b) => {
+            dateA = moment(a.date);
+            dateB = moment(b.date);
+            return dateA.isBefore(dateB) ? 1
+            : dateA.isSame(dateB) ? 0
+            : -1;
+        });
     });
 </script>
 
@@ -32,7 +39,7 @@
     }
     .post {
         border-bottom: 1px solid #333;
-        padding-bottom: 1em;
+        padding: 1em;
     }
 </style>
 
