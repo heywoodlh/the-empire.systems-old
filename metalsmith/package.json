@@ -14,7 +14,7 @@
     "metalsmith-permalinks": "^2.2.0",
     "metalsmith-lunr": "^0.2.1",
     "metalsmith-search-meta": "^1.0.0",
-    "metalsmith-moment": "^1.1.0",
+    "helper-moment": "^0.2.0",
     "clean-css": "^4.2.1"
   },
   "description": "https://www.the-empire.systems",
