@@ -2,9 +2,10 @@
 layout: page.html
 ---
 
+</b>
 
 <p>
-  <a href="mailto: l.spencer.heywood@protonmail.com">Send Email</a>
+  <a href="mailto: l.spencer.heywood@protonmail.com">l.spencer.heywood@protonmail.com</a>
 </p>
 
 <p>
