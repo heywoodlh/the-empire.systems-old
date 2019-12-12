@@ -9,7 +9,7 @@ var Metalsmith = require('metalsmith'),
     lunr = require('metalsmith-lunr'),
     searchMeta = require('metalsmith-search-meta');
 
-handlebars.registerHelper('moment', require('helper-moment'));
+handlebars.registerHelper('moment', require('metalsmith-moment'));
 
 handlebars.registerHelper('each_upto', function(ary, max, options) {
     if(!ary || ary.length == 0)
