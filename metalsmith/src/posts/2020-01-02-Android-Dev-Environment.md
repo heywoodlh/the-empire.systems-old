@@ -22,28 +22,35 @@ Android Studio is a development IDE provided by Google for developing on Android
 I am on Fedora 31 at the time of this writing so I will walk through the installation process on Linux (these commands assume your user can run `sudo` commands):
 
 
-- Download the Linux 64 bit Android Studio tar.gz file: [https://developer.android.com/studio/#downloads](https://developer.android.com/studio/#downloads)
+1. Download the Linux 64 bit Android Studio tar.gz file: [https://developer.android.com/studio/#downloads](https://developer.android.com/studio/#downloads)
 
-- Extract the downloaded tar.gz file (and remove it once extracted):
+2. Extract the downloaded tar.gz file (and remove it once extracted):
 
 ```bash
 tar xzvf ~/Downloads/android-studio-ide-*-linux.tar.gz && \ 
 	rm ~/Downloads/android-studio-ide-*-linux.tar.gz
 ```
+<br>
 
-- Move the extracted `android-studio` folder to `/opt/android-studio/` and change ownership to your user:
+3. Move the extracted `android-studio` folder to `/opt/android-studio/` and change ownership to your user:
 
 ```bash
 sudo mv ~/Downloads/android-studio /opt/android-studio/
 sudo chown -R "$USER":"$USER" /opt/android-studio
 ```
+<br>
 
-- Create a desktop entry for Android Studio:
+4. Create a desktop entry for Android Studio:
 
 ```bash
-printf "[Desktop Entry]\nName=Android Studio\nExec=/opt/android-studio/bin/studio.sh\nIcon=/opt/android-studio/bin/studio.png\nType=Application\nStartupWMClass=jetbrains-studio\n" | sudo tee /usr/share/applications/android-studio.desktop
+printf "[Desktop Entry]\n\
+Name=Android Studio\n\
+Exec=/opt/android-studio/bin/studio.sh\n\
+Icon=/opt/android-studio/bin/studio.png\n\
+Type=Application\n\
+StartupWMClass=jetbrains-studio\n" | sudo tee /usr/share/applications/android-studio.desktop
 ```
-
+<br>
 
 
 
@@ -79,6 +86,7 @@ The console ports are in the range of 5554 to 5585:
 ```
 sudo  nmap -sS -p5554-5585 localhost
 ```
+<br>
 
 The output of my scan looked something like this:
 
@@ -95,6 +103,7 @@ PORT     STATE SERVICE
 5556/tcp open  freeciv
 5557/tcp open  farenet
 ```
+<br>
 
 After connecting to the services, I figured out the ports were 5556 and 5554 for my Android devices.
 
@@ -114,12 +123,14 @@ Android Console: you can find your <auth_token> in
 '/home/heywoodlh/.emulator_console_auth_token'
 OK
 ```
+<br>
 
-As stated in the message, you have to authenticate to the Android console. The path to the auth token is stated in the message. If using the default path, grab the auth token using this command in a separate terminal window:
+As stated in the banner, you have to authenticate to the Android console. The path to the auth token is stated in the message. If using the default path, grab the auth token using this command in a separate terminal window:
 
 ```bash
 cat ~/.emulator_console_auth_token
 ```
+<br>
 
 Then, going back to the telnet session, run the auth command:
 
@@ -128,7 +139,7 @@ auth [auth token]
 Android Console: type 'help' for a list of commands
 OK
 ```
-
+<br>
 
 
 
@@ -146,6 +157,7 @@ OK
 gsm voice on
 OK
 ```
+<br>
 
 Repeat that for each emulated Android device you'd like to connect to the GSM network.
 
