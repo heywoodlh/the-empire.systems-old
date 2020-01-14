@@ -19,6 +19,8 @@ git clone https://github.com/heywoodlh/lokis-portal.git ~/Documents/lokis-portal
 sudo chown -R 33:33 ~/Documents/lokis-portal/
 docker run -d --name lokis-portal -p 80:80 -v "$HOME"/Documents/lokis-portal:/var/www/html php:7-apache-buster
 ```
+</br>
+
 
 Notice the change of ownership to user ID and group to 33. This is the user/group of the `www-data` user for the `php:7-apache-buster` Docker container and that user will need permission to write to `creds.html`.
 
@@ -37,7 +39,7 @@ When running the command above, a file called `creds.html` will be accessible in
 ```bash
 2020-01-13 11:52:25pm: accounts.google.com: 172.17.0.1 --- testing --- password --- Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
 ```
-
+</br>
 
 
 
@@ -48,5 +50,5 @@ Use Ngrok or a reverse proxy to easily serve the web page via HTTPS. For example
 ```bash
 ngrok http 80
 ```
-
+</br>
 This will provide you with an HTTPS link that you could phish from.
