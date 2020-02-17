@@ -302,4 +302,5 @@ code
 {
     width: 500px; 
     word-wrap: normal;
+    white-space : pre-wrap !important;
 }
