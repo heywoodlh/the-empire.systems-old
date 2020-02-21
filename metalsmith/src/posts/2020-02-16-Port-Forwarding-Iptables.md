@@ -28,12 +28,12 @@ INTERNAL_INTERFACE="wg0"
 
 iptables -P FORWARD DROP
 
-iptables -A FORWARD -i ${EXTERNAL_INTERFACE} -o ${INTERNAL_INTERFACE} -p tcp --syn --dport ${PORT} -m conntrack --ctstate NEW -j ACCEPT
-iptables -A FORWARD -i ${EXTERNAL_INTERFACE} -o ${INTERNAL_INTERFACE} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-iptables -A FORWARD -i ${INTERNAL_INTERFACE} -o ${EXTERNAL_INTERFACE} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+iptables -A FORWARD -i ${EXTERNAL_INTERFACE} -o ${INTERNAL_INTERFACE} -p tcp --syn --dport ${PORT} -m conntrack --ctstate NEW -j ACCEPT -w
+iptables -A FORWARD -i ${EXTERNAL_INTERFACE} -o ${INTERNAL_INTERFACE} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT -w
+iptables -A FORWARD -i ${INTERNAL_INTERFACE} -o ${EXTERNAL_INTERFACE} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT -w
 
-iptables -t nat -A PREROUTING -i ${EXTERNAL_INTERFACE} -p tcp --dport ${PORT} -j DNAT --to-destination ${CLIENT_ADDRESS}
-iptables -t nat -A POSTROUTING -o ${INTERNAL_INTERFACE} -p tcp --dport ${PORT} -d ${CLIENT_ADDRESS} -j SNAT --to-source ${SERVER_PRIVATE_ADDRESS}
+iptables -t nat -A PREROUTING -i ${EXTERNAL_INTERFACE} -p tcp --dport ${PORT} -j DNAT --to-destination ${CLIENT_ADDRESS} -w
+iptables -t nat -A POSTROUTING -o ${INTERNAL_INTERFACE} -p tcp --dport ${PORT} -d ${CLIENT_ADDRESS} -j SNAT --to-source ${SERVER_PRIVATE_ADDRESS} -w
 
 ```
 
