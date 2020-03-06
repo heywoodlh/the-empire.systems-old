@@ -45,6 +45,8 @@ Then start and enable `systemd-networkd`:
 
 ### Set Up a DHCP Server For The LAN: 
 
+Most of the DHCP server setup is [derived from the awesome Arch Wiki](https://wiki.archlinux.org/index.php/dhcpd#Configuration) so feel free to check out the documentation there for more information.
+
 Install the `dhcp` package using `pacman`:
 
 `sudo pacman -Sy dhcp --noconfirm`
