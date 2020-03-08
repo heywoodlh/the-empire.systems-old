@@ -67,13 +67,13 @@ subnet 10.10.10.0 netmask 255.255.255.0 {
 }
 ```
 
-Create a new service file called `/etc/systemd/system/dhcp4@.service` with the following content:
+Create a new service file called `/etc/systemd/system/dhcpd4@.service` with the following content:
 
 ```bash
 [Unit]
 Description=IPv4 DHCP server on %I
-Wants=network.target
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=forking
@@ -84,6 +84,10 @@ KillSignal=SIGINT
 [Install]
 WantedBy=multi-user.target
 ```
+
+Enable the `network-online` systemd service:
+
+`sudo systemctl enable systemd-networkd-wait-online.service`
 
 Now, start and enable the DHCP service on the LAN interface:
 
@@ -101,7 +105,7 @@ Masquerading is needed in order for the new LAN interface to have internet acces
 
 Before that will work IP forwarding needs to be enabled:
 
-`echo 'net.ipv4.ip_forward=1' | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`
+`echo 'net.ipv4.ip_forward=1' | sudo tee -a /etc/sysctl.d/10-ip_forward.conf && sudo sysctl -p`
 
 This simple script can be used to load the necessary `iptables` rules to set up Arch to masquerade the two interfaces.
 
