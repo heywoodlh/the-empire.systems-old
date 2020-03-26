@@ -87,7 +87,10 @@ PLUGINS=/data
 
 For ease of use, let's create a BASH alias for `vol.py` so you don't have to run a super long `docker run` command every time:
 
+```bash
 alias vol.py="docker run -it --rm -v ~/.volatilityrc:/root/.volatilityrc -w /data -v ${PWD}:/data heywoodlh/volatility --conf-file /root/.volatilityrc $@"
+```
+
 
 Now, make sure you are in the staging directory, and then run my Volatility Docker image to check if the Profile we made earlier is correct:
 
