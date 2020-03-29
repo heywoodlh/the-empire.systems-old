@@ -39,11 +39,14 @@ do
 	iptables -t nat -A POSTROUTING -o ${internalInterface} -p tcp --dport ${port} -d ${clientAddress} -j SNAT --to-source ${gatewayInternalAddress} -w
 done
 
-
 for port in "${udpPorts[@]}"
 do
-	iptables -t nat -A PREROUTING -i ${externalInterface} -p udp --dport ${port} -j DNAT --to-destination ${clientAddress} -w
-	iptables -t nat -A POSTROUTING -o ${internalInterface} -p udp --dport ${port} -d ${clientAddress} -j SNAT --to-source ${gatewayInternalAddress} -w
+        iptables -A FORWARD -i ${externalInterface} -o ${internalInterface} -p udp --dport ${port} -m conntrack --ctstate NEW -j ACCEPT -w
+        iptables -A FORWARD -i ${externalInterface} -o ${internalInterface} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT -w
+        iptables -A FORWARD -i ${internalInterface} -o ${externalInterface} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT -w
+
+        iptables -t nat -A PREROUTING -i ${externalInterface} -p udp --dport ${port} -j DNAT --to-destination ${clientAddress} -w
+        iptables -t nat -A POSTROUTING -o ${internalInterface} -p udp --dport ${port} -d ${clientAddress} -j SNAT --to-source ${gatewayInternalAddress} -w
 done
 ```
 
