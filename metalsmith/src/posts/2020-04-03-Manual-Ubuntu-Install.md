@@ -84,14 +84,14 @@ Press w
 
 ### Partition Formatting:
 
-Use the following commands to format your disk. I'm going to use BTRFS as my filesystem type for my root partition.
+Use the following commands to format your disk.
 
 ```bash
 mkfs.vfat /dev/sda1
 
 mkswap /dev/sda2 && swapon /dev/sda2
 
-mkfs.btrfs /dev/sda3
+mkfs.ext4 /dev/sda3
 ```
 
 
@@ -149,7 +149,6 @@ apt-get install -y initramfs-tools linux-firmware grub-efi-amd64
 apt-get install -y vim
 ```
 
-
 Set timezone:
 
 ```bash
@@ -197,9 +196,9 @@ passwd myusername
 Install Grub to `/boot`:
 
 ```bash
-grub-install --efi-directory=/boot --bootloader-id=GRUB
+grub-install --efi-directory=/boot --bootloader-id=grub --target=x86_64-efi /dev/sda
 
-grub-mkconfig -o /boot/grub/grub.cfg
+update-grub
 ```
 
 
