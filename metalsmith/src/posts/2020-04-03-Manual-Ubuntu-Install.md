@@ -189,8 +189,6 @@ Add a sudo user:
 adduser myusername
 
 usermod -aG sudo myusername
-
-passwd myusername
 ```
 
 Install Grub to `/boot`:
