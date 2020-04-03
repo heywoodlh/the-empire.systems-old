@@ -19,22 +19,35 @@ This simple script can be used to initiate the port forward in `iptables`:
 ```bash
 #!/usr/bin/env bash
 
-PORT=7070
-SERVER_PRIVATE_ADDRESS=10.100.100.1
-CLIENT_ADDRESS=10.100.100.2
+tcpPorts=(32400)
+udpPorts=(1900)
+gatewayInternalAddress=192.168.0.1
+clientAddress=192.168.0.50
 
-EXTERNAL_INTERFACE="ens3"
-INTERNAL_INTERFACE="wg0"
+externalInterface="eth0"
+internalInterface="eth1"
 
 iptables -P FORWARD DROP
 
-iptables -A FORWARD -i ${EXTERNAL_INTERFACE} -o ${INTERNAL_INTERFACE} -p tcp --syn --dport ${PORT} -m conntrack --ctstate NEW -j ACCEPT -w
-iptables -A FORWARD -i ${EXTERNAL_INTERFACE} -o ${INTERNAL_INTERFACE} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT -w
-iptables -A FORWARD -i ${INTERNAL_INTERFACE} -o ${EXTERNAL_INTERFACE} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT -w
+for port in "${tcpPorts[@]}"
+do
+	iptables -A FORWARD -i ${externalInterface} -o ${internalInterface} -p tcp --syn --dport ${port} -m conntrack --ctstate NEW -j ACCEPT -w
+	iptables -A FORWARD -i ${externalInterface} -o ${internalInterface} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT -w
+	iptables -A FORWARD -i ${internalInterface} -o ${externalInterface} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT -w
 
-iptables -t nat -A PREROUTING -i ${EXTERNAL_INTERFACE} -p tcp --dport ${PORT} -j DNAT --to-destination ${CLIENT_ADDRESS} -w
-iptables -t nat -A POSTROUTING -o ${INTERNAL_INTERFACE} -p tcp --dport ${PORT} -d ${CLIENT_ADDRESS} -j SNAT --to-source ${SERVER_PRIVATE_ADDRESS} -w
+	iptables -t nat -A PREROUTING -i ${externalInterface} -p tcp --dport ${port} -j DNAT --to-destination ${clientAddress} -w
+	iptables -t nat -A POSTROUTING -o ${internalInterface} -p tcp --dport ${port} -d ${clientAddress} -j SNAT --to-source ${gatewayInternalAddress} -w
+done
 
+for port in "${udpPorts[@]}"
+do
+        iptables -A FORWARD -i ${externalInterface} -o ${internalInterface} -p udp --dport ${port} -m conntrack --ctstate NEW -j ACCEPT -w
+        iptables -A FORWARD -i ${externalInterface} -o ${internalInterface} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT -w
+        iptables -A FORWARD -i ${internalInterface} -o ${externalInterface} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT -w
+
+        iptables -t nat -A PREROUTING -i ${externalInterface} -p udp --dport ${port} -j DNAT --to-destination ${clientAddress} -w
+        iptables -t nat -A POSTROUTING -o ${internalInterface} -p udp --dport ${port} -d ${clientAddress} -j SNAT --to-source ${gatewayInternalAddress} -w
+done
 ```
 
 Modify the variables as needed. I won't explain each of the variables as they should be self-explanatory.
