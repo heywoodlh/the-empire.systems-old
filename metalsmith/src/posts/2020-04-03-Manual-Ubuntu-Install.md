@@ -50,36 +50,28 @@ The output will show a list of disks, their partitions and their sizes. My disk 
 
 Now, let's edit the drive partitions with `fdisk`
 
-`fdisk /dev/sda`
-
-
-Clear old partitions:
-
-Press `o` to clear out previously existing partitions if there are any.
+`gdisk /dev/sda`
 
 
 Create the EFI partition:
 
-Press n, p [Enter], 1 [Enter], [Enter], +512M [Enter]
-
-Press t, ef [Enter]
+Press n, 1 [Enter], [Enter], +512M [Enter], ef00 [Enter]
 
 
 Create the swap partition (I'm just going to use 4GB of swap space):
 
-Press n, p [Enter], 2 [Enter], [Enter], +4G [Enter]
+Press n, 2 [Enter], [Enter], +4G [Enter], 8200 [Enter]
 
-Press t, 2 [Enter], 82 [Enter]
 
 
 Create the root partition:
 
-Press n, p [Enter], 3 [Enter], [Enter], [Enter]
+Press n, 3 [Enter], [Enter], [Enter], [Enter]
 
 
 Write the changes:
 
-Press w
+Press w, Y [Enter]
 
 
 ### Partition Formatting:
@@ -101,7 +93,7 @@ Mount the partitions we created earlier:
 
 ```bash
 mount /dev/sda3 /mnt
-mkdir -p /mnt/boot && mount /dev/sda1 /mnt/boot
+mkdir -p /mnt/boot/efi && mount /dev/sda1 /mnt/boot/efi
 ```
 
 Then bootstrap your base Ubuntu install (using Ubuntu 20.04 "Focal Fossa"):
@@ -137,16 +129,19 @@ arch-chroot /mnt
 ```
 
 
-Update repository data and install additional dependencies (modify packages as needed):
+Update repository data and install additional dependencies (modify packages as needed), make sure to not install GRUB to a drive as we will be using `systemd-boot`:
 
 ```bash
 apt-get update
 
 ## Necessary dependencies
-apt-get install -y initramfs-tools linux-firmware grub-efi-amd64
+apt-get install -y linux-generic linux-image-generic linux-headers-generic initramfs-tools linux-firmware efibootmgr
 
 ## Optional/opinionated dependencies
 apt-get install -y vim
+
+## Remove GRUB
+apt-get remove grub-common grub-gfxpayload-lists grub-pc grub-pc-bin grub2-common
 ```
 
 Set timezone:
@@ -191,12 +186,97 @@ adduser myusername
 usermod -aG sudo myusername
 ```
 
-Install Grub to `/boot`:
+
+Create a systemd-boot config file `/boot/efi/loader/loader.conf` with the following lines:
 
 ```bash
-grub-install --efi-directory=/boot --bootloader-id=grub --target=x86_64-efi /dev/sda
+default ubuntu
+timeout 1
+editor 0
+```
 
-update-grub
+Create a new directory:
+
+```bash
+mkdir -p /boot/efi/ubuntu
+```
+
+Then create a boot entry file in `/boot/efi/loader/entries/ubuntu.conf`, replacing the part UUID with the root partition found in `/etc/fstab` of your chroot:
+
+```bash
+title   Ubuntu
+linux   /ubuntu/vmlinuz-generic
+initrd  /ubuntu/initrd.img-generic
+options root=PARTUUID=YOUR_UUID rw
+```
+
+
+The only problem with using `systemd-boot` is that you'd need to manually update the kernels any time a new version of the Linux kernel is installed. To solve this, we will create a post install hook that will update the kernel entries in systemd-boot.
+
+Create `/etc/kernel/postinst.d/update-systemd-boot` with the following content (replacing the `PARTUUID` variable with the value of your root UUID found in `/etc/fstab`):
+
+```bash
+#!/bin/bash
+#
+# This is a simple custom kernel hook to populate the systemd-boot entries
+# whenever kernels are added or removed during an update.
+#
+
+
+# The PARTUUID of your root partition
+PARTUUID="INSERTYOURPARTUUIDHERE"
+
+vmlinuz=$(find /boot -maxdepth 1 -name "vmlinuz-*-generic")
+version=$(echo $vmlinuz | grep -o -P "\d+\.\d+\.\d+\-\d+" | sort -V | head -n -1)
+latest=$(echo $vmlinuz | grep -o -P "\d+\.\d+\.\d+\-\d+" | sort -V | tail -n 1)
+
+echo ">> COPYING ${latest}-generic. LATEST VERSION."
+
+cat << EOF > /boot/loader/entries/ubuntu.conf
+title   Ubuntu
+linux   /vmlinuz-generic
+initrd  /initrd.img-generic
+options root=PARTUUID=${PARTUUID} rw
+EOF
+
+for file in initrd.img vmlinuz; do
+    cp "/boot/${file}-${latest}-generic" "/boot/ubuntu/${file}-generic"
+done
+
+for ver in $version; do
+
+    echo ">> COPYING ${ver}-generic."
+
+cat << EOF > /boot/loader/entries/ubuntu-${ver}.conf
+title   Ubuntu ${ver}
+linux   /ubuntu/vmlinuz-${ver}-generic
+initrd  /ubuntu/initrd.img-${ver}-generic
+options root=PARTUUID=${PARTUUID} rw
+EOF
+
+    for file in initrd.img vmlinuz; do
+        cp "/boot/${file}-${ver}-generic" "/boot/efi/ubuntu/${file}-${ver}-generic"
+    done
+done
+```
+
+Make the script executable and symlink it to another relevant location:
+
+```bash
+chmod +x /etc/kernel/postinst.d/update-systemd-boot
+ln -s /etc/kernel/postinst.d/update-systemd-boot /etc/kernel/postrm.d/update-systemd-boot
+```
+
+Setup Systemd-boot:
+
+```bash
+bootctl --path=/boot/efi install
+```
+
+Verify boot entries:
+
+```bash
+bootctl list
 ```
 
 
