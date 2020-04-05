@@ -129,17 +129,19 @@ arch-chroot /mnt
 ```
 
 
-Update repository data and install additional dependencies (modify packages as needed):
+Update repository data and install additional dependencies (modify packages as needed), make sure to not install GRUB to a drive as we will be using `systemd-boot`:
 
 ```bash
 apt-get update
 
 ## Necessary dependencies
-apt-get install -y initramfs-tools linux-firmware efibootmgr
+apt-get install -y --no-install-recommends linux-generic linux-image-generic linux-headers-generic initramfs-tools linux-firmware efibootmgr
 
 ## Optional/opinionated dependencies
 apt-get install -y vim
 
+## Remove GRUB
+apt-get remove -y grub-common grub-gfxpayload-lists grub-pc grub-pc-bin grub2-common && apt-get autoremove -y
 ```
 
 Set timezone:
@@ -173,7 +175,7 @@ passwd
 Then install your preferred desktop environment, display manager, etc. I'll just use GNOME Shell + GDM as an example because I'm boring:
 
 ```bash
-apt-get install -y gnome-shell gnome-terminal gdm3 firefox
+apt-get install --no-install-recommends -y gnome-shell gnome-terminal gdm3 firefox
 ```
 
 Add a sudo user:
@@ -271,14 +273,6 @@ Setup Systemd-boot:
 bootctl --path=/boot/efi install
 ```
 
-Then, install the Linux kernel and make sure to not install GRUB to a drive as we will be using `systemd-boot`:
-
-```bash
-apt-get install -y linux-generic linux-image-generic linux-headers-generic
-
-## Remove GRUB
-apt-get remove -y grub-common grub-gfxpayload-lists grub-pc grub-pc-bin grub2-common && apt-get autoremove -y
-```
 
 Now, execute the hook script to move the kernel images to the correct directories for our `systemd-boot` config to recognize them:
 
