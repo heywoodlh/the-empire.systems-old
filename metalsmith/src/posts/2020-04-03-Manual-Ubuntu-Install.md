@@ -129,7 +129,7 @@ arch-chroot /mnt
 ```
 
 
-Update repository data and install additional dependencies (modify packages as needed), make sure to not install GRUB to a drive as we will be using `systemd-boot`:
+Update repository data and install additional dependencies (modify packages as needed):
 
 ```bash
 apt-get update
@@ -139,9 +139,6 @@ apt-get install -y --no-install-recommends linux-generic linux-image-generic lin
 
 ## Optional/opinionated dependencies
 apt-get install -y vim
-
-## Remove GRUB
-apt-get remove -y grub-common grub-gfxpayload-lists grub-pc grub-pc-bin grub2-common && apt-get autoremove -y
 ```
 
 Set timezone:
