@@ -129,19 +129,17 @@ arch-chroot /mnt
 ```
 
 
-Update repository data and install additional dependencies (modify packages as needed), make sure to not install GRUB to a drive as we will be using `systemd-boot`:
+Update repository data and install additional dependencies (modify packages as needed):
 
 ```bash
 apt-get update
 
 ## Necessary dependencies
-apt-get install -y linux-generic linux-image-generic linux-headers-generic initramfs-tools linux-firmware efibootmgr
+apt-get install -y initramfs-tools linux-firmware efibootmgr
 
 ## Optional/opinionated dependencies
 apt-get install -y vim
 
-## Remove GRUB
-apt-get remove grub-common grub-gfxpayload-lists grub-pc grub-pc-bin grub2-common
 ```
 
 Set timezone:
@@ -186,6 +184,12 @@ adduser myusername
 usermod -aG sudo myusername
 ```
 
+Create new directories:
+
+```bash
+mkdir -p /boot/efi/ubuntu/
+mkdir -p /boot/efi/loader/entries
+```
 
 Create a systemd-boot config file `/boot/efi/loader/loader.conf` with the following lines:
 
@@ -195,13 +199,7 @@ timeout 1
 editor 0
 ```
 
-Create a new directory:
-
-```bash
-mkdir -p /boot/efi/ubuntu
-```
-
-Then create a boot entry file in `/boot/efi/loader/entries/ubuntu.conf`, replacing the part UUID with the root partition found in `/etc/fstab` of your chroot:
+Then create a boot entry file in /boot/efi/loader/entries/ubuntu.conf, replacing the PARTUUID with the root partition found with `blkid`:
 
 ```bash
 title   Ubuntu
@@ -213,7 +211,7 @@ options root=PARTUUID=YOUR_UUID rw
 
 The only problem with using `systemd-boot` is that you'd need to manually update the kernels any time a new version of the Linux kernel is installed. To solve this, we will create a post install hook that will update the kernel entries in systemd-boot.
 
-Create `/etc/kernel/postinst.d/update-systemd-boot` with the following content (replacing the `PARTUUID` variable with the value of your root UUID found in `/etc/fstab`):
+Create `/etc/kernel/postinst.d/update-systemd-boot` with the following content (replacing the `PARTUUID` variable value with the value of your root PARTUUID found from `blkid`):
 
 ```bash
 #!/bin/bash
@@ -232,22 +230,22 @@ latest=$(echo $vmlinuz | grep -o -P "\d+\.\d+\.\d+\-\d+" | sort -V | tail -n 1)
 
 echo ">> COPYING ${latest}-generic. LATEST VERSION."
 
-cat << EOF > /boot/loader/entries/ubuntu.conf
+cat << EOF > /boot/efi/loader/entries/ubuntu.conf
 title   Ubuntu
-linux   /vmlinuz-generic
-initrd  /initrd.img-generic
+linux   /ubuntu/vmlinuz-generic
+initrd  /ubuntu/initrd.img-generic
 options root=PARTUUID=${PARTUUID} rw
 EOF
 
 for file in initrd.img vmlinuz; do
-    cp "/boot/${file}-${latest}-generic" "/boot/ubuntu/${file}-generic"
+    cp "/boot/${file}-${latest}-generic" "/boot/efi/ubuntu/${file}-generic"
 done
 
 for ver in $version; do
 
     echo ">> COPYING ${ver}-generic."
 
-cat << EOF > /boot/loader/entries/ubuntu-${ver}.conf
+cat << EOF > /boot/efi/loader/entries/ubuntu-${ver}.conf
 title   Ubuntu ${ver}
 linux   /ubuntu/vmlinuz-${ver}-generic
 initrd  /ubuntu/initrd.img-${ver}-generic
@@ -272,6 +270,22 @@ Setup Systemd-boot:
 ```bash
 bootctl --path=/boot/efi install
 ```
+
+Then, install the Linux kernel and make sure to not install GRUB to a drive as we will be using `systemd-boot`:
+
+```bash
+apt-get install -y linux-generic linux-image-generic linux-headers-generic
+
+## Remove GRUB
+apt-get remove -y grub-common grub-gfxpayload-lists grub-pc grub-pc-bin grub2-common && apt-get autoremove -y
+```
+
+Now, execute the hook script to move the kernel images to the correct directories for our `systemd-boot` config to recognize them:
+
+```bash
+/etc/kernel/postinst.d/update-systemd-boot
+```
+
 
 Verify boot entries:
 
