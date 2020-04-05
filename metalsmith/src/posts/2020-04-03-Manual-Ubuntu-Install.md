@@ -172,7 +172,7 @@ passwd
 Then install your preferred desktop environment, display manager, etc. I'll just use GNOME Shell + GDM as an example because I'm boring:
 
 ```bash
-apt-get install --no-install-recommends -y gnome-shell gnome-terminal gdm3 firefox
+apt-get install -y gnome-shell gnome-terminal gdm3 firefox
 ```
 
 Add a sudo user:
@@ -198,7 +198,7 @@ timeout 1
 editor 0
 ```
 
-Then create a boot entry file in /boot/efi/loader/entries/ubuntu.conf, replacing the PARTUUID with the root partition found with `blkid`:
+Then create a boot entry file in /boot/efi/loader/entries/ubuntu.conf, *replacing the PARTUUID with the root partition found with `blkid`*:
 
 ```bash
 title   Ubuntu
@@ -210,7 +210,7 @@ options root=PARTUUID=YOUR_UUID rw
 
 The only problem with using `systemd-boot` is that you'd need to manually update the kernels any time a new version of the Linux kernel is installed. To solve this, we will create a post install hook that will update the kernel entries in systemd-boot.
 
-Create `/etc/kernel/postinst.d/update-systemd-boot` with the following content (replacing the `PARTUUID` variable value with the value of your root PARTUUID found from `blkid`):
+Create `/etc/kernel/postinst.d/update-systemd-boot` with the following content, *replacing the `PARTUUID` variable value with the value of your root PARTUUID found from `blkid`*:
 
 ```bash
 #!/bin/bash
